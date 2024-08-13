@@ -94,3 +94,38 @@ git restore nome-do-arquivo
 Este comando é usado para restaurar arquivos no repositório Git para o estado em que estavam em um commit anterior, ou para desfazer mudanças feitas nos arquivos na working directory (diretório de trabalho) que ainda não foram adicionadas ao stage (área de preparação).
 
 Podemos usar este comando quando deseja descartar mudanças feitas em um arquivo específico e **retornar ao estado original que o arquivo tinha no último commit ou no último stage**. Isso é útil, por exemplo, quando você começou a modificar um arquivo mas decide que não quer mais aplicar essas mudanças.
+
+### Modificando última mensagem do commit
+````
+git commit --amend -m "nova mensagem aqui"   
+````
+### Cuidado 🚨🚨
+***O Git substituirá o commit mais recente pelo novo commit***
+
+A opção --amend é frequentemente usada para corrigir a mensagem do commit ou adicionar novos arquivos que foram esquecidos no commit anterior. O commit anterior é substituído por um novo commit com a nova mensagem fornecida.
+
+***Atenção:***  Como este comando reescreve o histórico de commits, ele deve ser usado com cuidado, especialmente em repositórios compartilhados. Se o commit já foi enviado para um repositório remoto, alterar o commit pode causar problemas de sincronização para outros colaboradores.
+
+### Voltar para um commit anterior
+````shell
+# Resetar o HEAD para um commit específico
+git reset <opções> <commit>
+````
+O comando git reset é uma poderosa ferramenta no Git usada para desfazer mudanças no histórico de commits ou na área de staging (área de preparação). Dependendo das opções usadas, ele pode alterar o ponteiro do HEAD para um commit específico, modificar a área de staging e até mesmo mudar o conteúdo do diretório de trabalho.
+
+#### Parâmetros:
+**commit:** Pode ser um identificador de commit (SHA-1 hash), uma referência como HEAD, HEAD~1, branch_name, ou um outro ponto do histórico.
+
+#### Efeitos:
+- **--soft:** Mantém as mudanças no diretório de trabalho e na área de staging.
+
+- **--mixed (PADRÃO):** Mantém as mudanças no diretório de trabalho, mas remove-as da área de staging.
+
+- **--hard:** Desfaz todas as mudanças no diretório de trabalho e na área de staging, sincronizando tudo com o commit especificado.
+
+#### Atenção 🚨🚨
+Usar git reset --hard pode resultar na perda de trabalho não salvo. Deve ser usado com cautela.
+git reset altera o histórico de commits locais, portanto, não deve ser usado em branches compartilhados sem coordenação com outros desenvolvedores.
+
+## Enviando e Baixando Alterações com o Repositório Remoto
+
