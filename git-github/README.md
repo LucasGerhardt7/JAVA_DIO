@@ -129,3 +129,39 @@ git reset altera o histórico de commits locais, portanto, não deve ser usado e
 
 ## Enviando e Baixando Alterações com o Repositório Remoto
 
+### Conectando a um repositório remoto:
+
+````shell
+# Adicionar um repositório remoto chamado 'origin'
+git remote add origin https://github.com/exemplo/meu-novo-repositorio.git
+````
+**Efeito:** Após executar este comando, seu repositório local estará conectado ao repositório remoto especificado.
+
+````shell
+# Renomear a branch atual para 'main'
+git branch -M main
+````
+**Efeito:** Sua branch padrão é renomeada para main, que é uma convenção comum em novos repositórios (anteriormente, a branch padrão era frequentemente chamada de master).
+
+
+````shell
+# Enviar a branch 'main' para o repositório remoto e definir como padrão
+git push -u origin main
+
+````
+**Efeito:** As mudanças na branch main são enviadas para o repositório remoto e essa branch é definida como a padrão para futuras operações de push e pull.
+
+#### git push -u origin main:
+
+- **git push:** 
+
+    Envia as mudanças da branch local para o repositório remoto.
+- **-u:** 
+  
+    Define a branch remota como a upstream padrão para a branch local, o que simplifica futuros comandos git push e git pull.
+- **origin:**
+    
+     Nome do repositório remoto (adicionado no primeiro comando).
+- **main:** 
+  
+    Nome da branch que está sendo enviada para o repositório remoto.
