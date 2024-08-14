@@ -16,7 +16,14 @@
 - Clonando um repositório Git existente. (git clone)
 
 ### Clonar repositório alterando o nome: 
-git clone {url} {novo_nome_repositorio}
+```shell
+#clona o repositório todo
+git clone <url> <novo_nome_repositorio>
+```
+```shell
+#clona uma branch especifica
+git clone <url> --branch <nome-da-branch> --single-branch
+```
 
 ##### Exemplo:
 
@@ -165,3 +172,90 @@ git push -u origin main
 - **main:** 
   
     Nome da branch que está sendo enviada para o repositório remoto.
+
+## Trabalhando com branches
+### Exibindo branches
+````
+git branch
+````
+#### Opções Comuns:
+**-v:** Exibe informações mais detalhadas sobre cada branch, incluindo o último commit feito em cada uma delas. Mostra o hash abreviado e a mensagem do último commit para cada branch.`git branch -v`
+
+**-a:** Lista todas as branches, incluindo as remotas.`git branch -a`
+
+**-r:** Lista apenas as branches remotas.
+`git branch -r`
+
+### Criando branches
+ ````shell
+# Criar uma nova branch chamada 'nova-branch' sem mudar para ela
+git branch nova-branch
+````
+**Efeito:** Este comando cria uma nova branch chamada nova-branch, mas você permanece na branch atual. Não há mudança de contexto para a nova branch.
+
+
+`````shell
+# Criar e mudar para uma nova branch chamada 'teste'
+git checkout -b teste
+`````
+**Efeito:** Cria uma nova branch chamada teste a partir do estado atual da branch em que você estava (geralmente main) e alterna para essa nova branch. Esta é uma prática comum quando você quer desenvolver uma nova feature ou testar algo sem afetar a branch principal.
+
+### Alternando entre as branches
+`````shell
+# Mudar para uma branch ou restaurar arquivos para um estado específico
+git checkout <opções> <branch> | <commit> | <arquivo>
+`````
+
+##### O que faz este comando?
+O comando git checkout é uma ferramenta versátil no Git que pode ser usada para mudar de branch, restaurar arquivos para um estado anterior ou até mesmo criar novas branches. Ele é amplamente utilizado em vários contextos durante o desenvolvimento.
+
+#### Mudar para uma branch existente:
+````
+git checkout <nome-da-branch>
+````
+**Efeito:** Troca para a branch especificada, alterando o diretório de trabalho para refletir o estado dessa branch.
+
+#### Restaurar um arquivo específico para um estado anterior:
+```
+git checkout <commit> -- <arquivo>
+```
+**Efeito:** Restaura o arquivo para o estado que ele tinha em um commit específico.
+
+**Exemplo:**
+```
+git checkout 3fa4b9c -- config.yaml
+```
+Restaura o arquivo config.yaml para o estado que ele tinha no commit 3fa4b9c.
+
+Opções Comuns:
+-b: Cria uma nova branch e muda para ela.
+`<branch>`: Nome da branch para a qual você deseja mudar.
+
+`<commit>`: SHA-1 hash do commit ou referência de commit (por exemplo, HEAD, HEAD~1).
+
+`-- <arquivo>`: Usado para restaurar um arquivo específico para o estado de um commit anterior.
+
+##### Atenção 🚨🚨
+**Mudança de Contexto:** Quando você usa git checkout `<branch>`, ele muda o diretório de trabalho para refletir o estado dessa branch, o que pode afetar quais arquivos você vê e em que estado eles estão.
+
+**Perda de Mudanças:** Se houver mudanças não comitadas, elas podem ser sobrescritas ou perdidas ao mudar de branch. É uma boa prática comitar ou stager as mudanças antes de usar git checkout.
+
+#### Comando Substituto:
+Note que a partir do Git 2.23, o comando git checkout foi parcialmente substituído por dois comandos mais específicos: git switch (para trocar de branch) e git restore (para restaurar arquivos). No entanto, git checkout continua amplamente utilizado devido à sua versatilidade.
+
+Esses exemplos mostram a flexibilidade do comando git checkout, sendo um dos comandos essenciais no fluxo de trabalho com Git.
+
+### Mesclando branches
+````shell
+# Mesclar uma branch específica na branch atual
+git merge <nome-da-branch>
+````
+**Efeito:** Mescla as mudanças da branch `<nome-da-branch>` na branch atual. O Git tentará combinar os históricos de commits das duas branches e aplicar as mudanças de forma integrada.
+
+### Deletando branches
+````
+git branch -d <nome-da-branch>
+````
+**-d:** Deleta a branch especificada, mas apenas se ela já foi mesclada.
+
+**-D:** Força a deleção da branch especificada, independentemente de ela ter sido mesclada.
