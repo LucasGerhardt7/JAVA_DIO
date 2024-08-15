@@ -1,12 +1,16 @@
-# JAVA_DIO
+# Bootcamp: Claro - Java com Spring Boot
 
-Repositório para armazenar o conteúdo das aulas de JAVA da plataforma DIO
+📚📖 Este repositório é dedicado para eu armazenar minhas anotações e códigos das aulas do bootcamp. 
 
-## Primeiro-projeto-java
+## Módulo-01
+
+### Primeiro-projeto-java
 
 - Hello world
   
-## git-github
+### git-github
 
 - Conteúdos de como usar o git e o github
 - Contribuindo em um projeto open-source
+
+## Módulo-02
