@@ -1,4 +1,4 @@
-package edu.lucas.m1;
+package educ.lucas.curso01;
 
 public class MinhaClasse {
     public static void main(String[] args) {

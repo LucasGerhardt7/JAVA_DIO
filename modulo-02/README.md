@@ -161,7 +161,7 @@ ou então
 > 3. Crie uma pasta primeiraSemana (dentro de `lucas`)
 >
 > No arquivo adicionado na pasta primeiraSemana, deve conter uma declaração de `package` na primeira linha.
-> Algo como: 
+> Algo como:
 >
 > ````java
 > package edu.lucas.segundaSemana;
@@ -184,6 +184,7 @@ Uma das maiores dificuldades da programação é escrever algoritimos legíveis 
 - Defina um idioma único para suas variáveis. Se você for declarar variáveis em inglês, defina todas em inglês.
   
 >[!CAUTION]Não recomendado
+>
 > ````java
 >double salMedio = 1500; // abreviado
 >String emails = "nome@gmail.com" // [plural] confuso, pois a variável só possui o valor de um único email
@@ -194,12 +195,171 @@ Uma das maiores dificuldades da programação é escrever algoritimos legíveis 
 Os métodos deverão ser nomeados como **verbos**, através de uma mistura de letras minúsculas e maiúsculas. Em princípio, todas as letras que compõe o nome devem ser mantidas em minúsculo, com exceção da primeira letra de cada palavra composta a partir da segunda palavra.
 
   >[!TIP] Exemplos sugeridos
+  >
   >```java
   >somar(int n1, int n2){}
   >abrirConexao(){}
   >concluirProcessamento(){}
   >findById(){}
   >´´´
-
   >[!CAUTION] calcularImprimir(){} 
   > O exemplo acima não está bom, pois não sabemos se o método calcula ou imprime.
+  
+## Tipos Primitivos
+
+>[!NOTE] Os oito tipos primitivos em java são:
+int, byte, short, long, float, double, boolean e char - esses tipos não são considerados objetos, e portanto representam valores brutos. Eles são armazenados diretamente na pilha de memória (Memory stack).
+
+| **Tipo**  | **Memória** | **Valor Mínimo**           | **Valor Máximo**            |
+|-----------|-------------|----------------------------|-----------------------------|
+| `byte`    | 8 bits      | -128                       | 127                         |
+| `short`   | 16 bits     | -32.768                    | 32.767                      |
+| `int`     | 32 bits     | -2^31 (-2.147.483.648)     | 2^31 - 1 (2.147.483.647)    |
+| `long`    | 64 bits     | -2^63 (-9.223.372.036.854.775.808) | 2^63 - 1 (9.223.372.036.854.775.807) |
+| `float`   | 32 bits     | ~-3.4 * 10^38              | ~3.4 * 10^38                |
+| `double`  | 64 bits     | ~-1.7 * 10^308             | ~1.7 * 10^308               |
+| `char`    | 16 bits     | '\u0000' (0)               | '\uffff' (65.535)           |
+| `boolean` | 1 bit       | `false` (0)                | `true` (1)                  |
+---
+
+````java
+// byte: Um número inteiro de 8 bits (1 byte). Valores vão de -128 a 127.
+byte idade = 25;
+
+// short: Um número inteiro de 16 bits (2 bytes). Valores vão de -32.768 a 32.767.
+short ano = 2024;
+
+// int: Um número inteiro de 32 bits (4 bytes). Valores vão de -2^31 a 2^31 - 1.
+int populacao = 1_000_000;
+
+// long: Um número inteiro de 64 bits (8 bytes). Valores vão de -2^63 a 2^63 - 1.
+long distancia = 123_456_789L;
+
+// float: Um número de ponto flutuante de precisão simples (32 bits). Utilizado para números decimais.
+float preco = 19.99f;
+
+// double: Um número de ponto flutuante de precisão dupla (64 bits). Utilizado para números decimais com maior precisão que float.
+double pi = 3.14159;
+
+// char: Um caractere de 16 bits. Representa um único caractere Unicode.
+char letra = 'A';
+
+// boolean: Um valor lógico que pode ser true (verdadeiro) ou false (falso).
+boolean ativo = true;
+
+````
+>[!CAUTION] Long e Float
+tipo `long` e `float` precisam ser terminado com sua letra inicial.
+>
+>- `long distancia = 123_456_789L;`
+>
+>- `float preco = 19.99f;`
+
+Apesar de o tipo float ocupar metade da memória consumida do que um tipo double, ele é menos utilizado. Ele sofre de uma limitação que compromete seu uso em determinadas situações: somente mantém uma precisão decimal entre 6 e 7 dígitos.
+
+Atualmente, com os computadores modernoss, se tornou desnecessário utilizar os tipos `short` e `byte`, pois não precisamos nos preocupar tanto assim com o espaço de memória reduzido.
+
+Da mesma forma, dificilmente utilizaremos o tipo `long`, pois não é tão comum trabalharmos com valores tão grandes.
+
+Portanto, para representar números, na grande maioria da vezes utilizaremos `int` para inteiros e `float` para números fracionados.
+
+>[!TIP] Curiosidade sobre o int
+Mesmo que tenhamos 4 tipos inteiros, a maior parte das vezes usamos o int por conta da compatibilidade da JVM.
+>
+>Literais inteiros em Java, como 10, são automaticamente tratados como int pela JVM, a menos que especificado de outra forma com um sufixo L para long.
+>
+>Exemplo:
+>
+>```java
+>int valor = 100; // Literal 100 é um int por padrão
+>```
+>
+>*Um número literal é um valor numérico diretamente representado no código-fonte de um programa, sem a necessidade de ser calculado ou derivado de variáveis. Em outras palavras, é um valor numérico escrito explicitamente no código.*
+
+### Números começando com zero
+
+Em Java, um número inteiro que começa com 0 é interpretado como um literal octal (base 8), e isso pode causar comportamentos inesperados se você não estiver ciente disso.
+
+Exemplos:
+Literal octal:
+
+````java
+int numero = 012;  // 012 é um literal octal, equivalente a 10 em decimal
+````
+
+Nesse exemplo, 012 não é interpretado como 12 em decimal, mas sim como 10 porque 012 é um número octal. No sistema octal, 012 significa `1 * 8 + 2 = 10` em decimal.
+
+**Problemas Potenciais:**
+Se você pretende usar um número decimal que começa com 0, como 012, mas não quer que ele seja interpretado como octal, isso pode levar a resultados incorretos.
+
+**Como Evitar:**
+Para garantir que um número seja interpretado como decimal, basta não começar com 0. Se você precisa trabalhar com números que poderiam ser confundidos com octais, ou você deve remover o zero inicial, ou usar uma representação adequada.
+
+**Nota sobre outros literais:**
+
+- Números que começam com 0x ou 0X são interpretados como literais hexadecimais (base 16).
+
+- Números que começam com 0b ou 0B são interpretados como literais binários (base 2).
+
+Esses prefixos indicam diferentes bases numéricas, mas apenas o prefixo 0 sem uma letra é interpretado como octal.
+
+### Tipagem
+
+>[!CAUTION] Java é fortemente tipado
+Veja o cenário abaixo:
+>
+>````java
+>// Declaração e >inicialização de um short
+>short numeroCurto = 1;
+>
+>// Conversão >implícita de short para int (permitido)
+>int numeroNormal = numeroCurto;
+>
+>// Tentativa de >conversão de int para short (erro de compilação)
+>short numeroCurto2 = numeroNormal;
+>````
+
+#### Explicação:
+
+- **Conversão de `short` para `int`:**
+A linha `int numeroNormal = numeroCurto;` está correta porque há uma promoção automática de tipos menores (`short`) para tipos maiores (`int`). Essa conversão é feita de forma implícita pela JVM, sem necessidade de casting, pois não há risco de perda de dados.
+
+- **Conversão de `int` para `short`:**
+A linha `short numeroCurto2 = numeroNormal;` gera um erro de compilação. Isso ocorre porque `int` tem um intervalo maior do que `short`, então essa conversão não é permitida implicitamente. Em Java, o tipo `int` pode armazenar valores que excedem a capacidade de um `short`. Portanto, ao tentar atribuir um `int` a um `short`, a conversão precisa ser feita explicitamente com casting para indicar ao compilador que você está ciente dos riscos de possível perda de dados.
+
+#### Solução:
+
+Para corrigir o problema, é necessário fazer um casting explícito de `int` para `short`:
+
+```java
+short numeroCurto2 = (short) numeroNormal;
+```
+
+#### Considerações:
+
+- Casting explícito pode resultar em perda de dados se o valor de int exceder o intervalo que short pode armazenar (de -32.768 a 32.767).
+
+- Sempre que converter tipos maiores para menores, verifique se o valor está dentro do intervalo do tipo menor para evitar resultados inesperados.
+  
+## Variáveis e constantes
+
+### Variável
+
+ Uma variável é uma área de memória, associada a um nome, que pode armazenar valores de um determinado tipo. Um tipo de dado define um conjunto de valores e um conjunto de operações. Java é uma linguagem com rigidez de tipos, diferente de linguagens como JavaScript, onde declarar o tipo da variável não é obrigatório.
+
+ No java, utilizamos identificadores que representam uma referência (ponteiro) a um valor em memória, e esta referência pode ser redirecionada a outro valor, sendo portanto esa a causa do nome "variável", pois o valor pode variar.
+
+````java
+int numero = 27;
+````
+
+### Constante
+
+ Já as constantes são valores armazenados em memória que não podem ser modificados depois de declarados. Em java, esses valores são representados pela palavra `final`, seguida do tipo.
+
+ >[!TIP] Identificador
+ Por convenção, constantes são sempre escritas em CAIXA_ALTA.
+
+````java
+final int ANO_NASCIMENTO = 1998;
+````
