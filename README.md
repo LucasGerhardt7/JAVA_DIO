@@ -14,3 +14,5 @@
 - Contribuindo em um projeto open-source
 
 ## Módulo-02
+
+- Tipos, Variáveis e Constantes

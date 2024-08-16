@@ -363,3 +363,129 @@ int numero = 27;
 ````java
 final int ANO_NASCIMENTO = 1998;
 ````
+
+## Operadores em Java
+
+### Operadores Aritméticos
+
+Os operadores aritméticos são usados para realizar operações matemáticas básicas, como adição, subtração, multiplicação, e divisão.
+
+| Operador | Descrição             | Exemplo            |
+|----------|-----------------------|--------------------|
+| `+`      | Adição                | `a + b`            |
+| `-`      | Subtração             | `a - b`            |
+| `*`      | Multiplicação         | `a * b`            |
+| `/`      | Divisão               | `a / b`            |
+| `%`      | Módulo (Resto)        | `a % b`            |
+
+>[!NOTE] CONCATENADOR
+O operador de adição (+), quando utilizado em variáveis do tipo texto, realizará a "concatenação de textos".
+
+.
+
+>[!WARNING] ATENÇÃO!
+>A partir do momento em que é utilizado o (+) como concatenação, o java não reconhece mais como operador aritmético, apenas como concatenador.
+>
+>`Variavel = 1+1+1+"1"` = 31, sendo 3 da soma e concatenou o 1
+>
+>`Variavel = "1"+1+1+"1"` = 1111, sendo que concatenou todos os valores, pois após concatenar uma vez, não será mais possível fazer a conta.
+>
+>**Como burlar esse problema:**
+>
+> Utilizando parênteses para priorizar a conta antes de concatenar:
+>
+>`variavel = "1"+(1+1+1)` = 13, onde a soma foi feita primeiro e só depois foi concatenado.
+
+### Operadores Unários
+
+Os operadores unários realizam operações em apenas um operando. Eles incluem operações como incremento, decremento e mudança de sinal.
+
+| Operador | Descrição                                 | Exemplo              |
+|----------|-------------------------------------------|----------------------|
+| `+`      | Indica valor positivo (normalmente implícito) | `+a`                 |
+| `-`      | Negação do valor                          | `-a`                 |
+| `++`     | Incremento (incrementa em 1)              | `a++` ou `++a`       |
+| `--`     | Decremento (decrementa em 1)              | `a--` ou `--a`       |
+| `!`      | Negação lógica (inverte valor booleano)   | `!true` (resulta em `false`) |
+
+### Operadores Relacionais
+
+Os operadores relacionais são usados para comparar dois valores e retornar um valor booleano (`true` ou `false`).
+
+| Operador | Descrição              | Exemplo            |
+|----------|------------------------|--------------------|
+| `==`     | Igual a                | `a == b`           |
+| `!=`     | Diferente de           | `a != b`           |
+| `>`      | Maior que              | `a > b`            |
+| `<`      | Menor que              | `a < b`            |
+| `>=`     | Maior ou igual a       | `a >= b`           |
+| `<=`     | Menor ou igual a       | `a <= b`           |
+
+### Operadores Lógicos
+
+Os operadores lógicos são usados para combinar duas ou mais expressões booleanas.
+
+| Operador | Descrição              | Exemplo            |
+|----------|------------------------|--------------------|
+| `&&`     | E lógico (AND)         | `a && b`           |
+| `\|\|`   | OU lógico (OR)         | `a \|\| b`         |
+| `!`      | Negação lógica (NOT)   | `!a`               |
+
+### Operador Ternário
+
+O operador ternário é uma forma concisa de representar uma expressão condicional.
+
+| Operador | Descrição                               | Exemplo                        |
+|----------|-----------------------------------------|--------------------------------|
+| `?:`     | Expressão condicional (if-else simplificado) | `condição ? valor1 : valor2` |
+
+#### Exemplo de uso do operador ternário:
+
+```java
+int resultado = (a > b) ? a : b;
+
+```
+
+### Operadores de Atribuição
+
+Os operadores de atribuição são usados para atribuir valores a variáveis. O operador de atribuição mais básico é o `=`, mas existem versões combinadas com operadores aritméticos para facilitar a manipulação de valores.
+
+| Operador | Descrição                                 | Exemplo            |
+|----------|-------------------------------------------|--------------------|
+| `=`      | Atribuição simples                        | `a = b`            |
+| `+=`     | Atribuição com adição                     | `a += b` (equivale a `a = a + b`) |
+| `-=`     | Atribuição com subtração                  | `a -= b` (equivale a `a = a - b`) |
+| `*=`     | Atribuição com multiplicação              | `a *= b` (equivale a `a = a * b`) |
+| `/=`     | Atribuição com divisão                    | `a /= b` (equivale a `a = a / b`) |
+| `%=`     | Atribuição com módulo                     | `a %= b` (equivale a `a = a % b`) |
+
+### Operadores Bitwise
+
+Os operadores bitwise permitem manipular os bits individuais de um valor inteiro. Eles são frequentemente usados em operações de baixo nível, como na programação de sistemas embarcados.
+
+| Operador | Descrição                                 | Exemplo            |
+|----------|-------------------------------------------|--------------------|
+| `&`      | E bit a bit (AND)                         | `a & b`            |
+| `\|`      | OU bit a bit (OR)                         | `a \| b`            |
+| `^`      | OU exclusivo bit a bit (XOR)              | `a ^ b`            |
+| `~`      | Negação bit a bit (NOT)                   | `~a`               |
+| `<<`     | Deslocamento de bits à esquerda           | `a << 2`           |
+| `>>`     | Deslocamento de bits à direita            | `a >> 2`           |
+| `>>>`    | Deslocamento de bits à direita sem sinal  | `a >>> 2`          |
+
+### Operadores de Referência
+
+Os operadores de referência são usados principalmente para manipular objetos e arrays em Java.
+
+| Operador | Descrição                                 | Exemplo            |
+|----------|-------------------------------------------|--------------------|
+| `.`      | Acesso a membro de objeto                 | `objeto.metodo()`  |
+| `[]`     | Acesso a elementos de array               | `array[0]`         |
+| `instanceof` | Verifica se um objeto é uma instância de uma classe | `objeto instanceof Classe` |
+
+#### Exemplo de uso de operadores de referência:
+
+```java
+String nome = "Java";
+System.out.println(nome.length());  // Usa o operador `.` para acessar o método `length`
+```
