@@ -190,7 +190,7 @@ Uma das maiores dificuldades da programação é escrever algoritimos legíveis 
 >String emails = "nome@gmail.com" // [plural] confuso, pois a variável só possui o valor de um único email
 >````
 
-#### Métodos
+#### Método
 
 Os métodos deverão ser nomeados como **verbos**, através de uma mistura de letras minúsculas e maiúsculas. Em princípio, todas as letras que compõe o nome devem ser mantidas em minúsculo, com exceção da primeira letra de cada palavra composta a partir da segunda palavra.
 
@@ -201,7 +201,10 @@ Os métodos deverão ser nomeados como **verbos**, através de uma mistura de le
   >abrirConexao(){}
   >concluirProcessamento(){}
   >findById(){}
-  >´´´
+  >```
+
+.
+
   >[!CAUTION] calcularImprimir(){} 
   > O exemplo acima não está bom, pois não sabemos se o método calcula ou imprime.
   
@@ -489,3 +492,249 @@ Os operadores de referência são usados principalmente para manipular objetos e
 String nome = "Java";
 System.out.println(nome.length());  // Usa o operador `.` para acessar o método `length`
 ```
+
+## Métodos
+
+### Critério de nomeação de métodos
+
+- Deve ser nomeado como verbo
+- Seguir o padão camelCase
+
+>[!NOTE] Atenção!
+>Não existe em **JAVA** o conceito de métodos globais. Todos os métodos devem SEMPRE ser definidos dentro de uma classe.
+
+### Critério de definição de métodos
+
+Mas, como sabemos a melhor forma de definir os métodos das nossas classes? Para chegar a essa conclusão, somos auxiliados por uma convenção estrutural para os métodos. Essa convenção é determinada pelos aspectos abaixo:
+
+1. **Qual a proposta principal do método?** Você deve se perguntar constantemente até compreender a real finalidade do mesmo.
+2. **Qual o tipo de retorno esperado após executar o método?** Você deve analisar se o método será responsável por retornar algum valor ou não.
+
+3. **Quais parâmetros serão necessários para execussão do método?** OS métodos as vezes precisão de argumentos como critérios para a execussão.
+4. **O método possúi o risco de apresentar alguma excessão?** Excessões são comuns na execussão de métodos, as vezes é necessário prever e tratar a possível existência de uma excessão.
+5. **QUal a visibilidade do método?** Será necessário que o método seja visível a toda aplicação, somente em mesmo pacotes, através de herança ou somente a nível da própria classe.
+
+>[!NOTE] 
+Caso o método não retorne nenhum valor, ele será representado pela palavra chave `void`
+
+#### Quando usar um método que retorna um valor
+
+- Quando o método realiza um cálculo e você precisa do resultado desse cálculo.
+- Quando o método busca ou obtém dados que são necessários para outras partes do programa.
+- Quando a lógica do método precisa informar algum resultado ao chamador.
+
+#### Quando usar um método que não retorna um valor
+
+- Quando o método está realizando uma ação, como imprimir uma mensagem ou atualizar o estado de um objeto, e não precisa fornecer um valor de volta.
+- Quando a operação realizada pelo método é apenas um efeito colateral, como alterar o estado de um objeto ou modificar uma variável global.
+- Quando o método realiza uma operação que não tem um "resultado" que o chamador precisa capturar.
+
+## Escopo
+
+## Palavras Reservadas
+
+Palavras reservadas são identificadores de uma linguagem que já possuem uma finalidade específica, portanto não podem ser utilizados para nomear variáveis, classes, métodos ou atributos.
+
+A linguagem Java possui 52 palavras reservadas. Todas essas palavras são classificadas em grupos e escritas com **letra minúscula**, sendo identificadas com uma cor especial pela maioria das IDE's. Abaixo temos a lista de palavras agrupadas por sua finalidades.
+
+### Controle de Pacotes
+
+- **`import`**: Importa pacotes ou classes para dentro do código.
+- **`package`**: Especifica a que pacote todas as classes de um arquivo pertencem.
+
+## Modificadores de Acesso
+
+- **`public`**: Acesso de qualquer classe.
+- **`private`**: Acesso apenas dentro da classe.
+- **`protected`**: Acesso por classes no mesmo pacote e subclasses.
+
+### Tipos Primitivos
+
+- **`boolean`**: Um valor indicando verdadeiro ou falso.
+- **`byte`**: Um inteiro de 8 bits (signed).
+- **`char`**: Um caractere Unicode (16-bit unsigned).
+- **`double`**: Um número de ponto flutuante de 64 bits (signed).
+- **`float`**: Um número de ponto flutuante de 32 bits (signed).
+- **`int`**: Um inteiro de 32 bits (signed).
+- **`long`**: Um inteiro de 64 bits (signed).
+- **`short`**: Um inteiro de 16 bits (signed).
+- **`void`**: Indica que o método não tem retorno de valor.
+
+### Modificadores de Classes, Variáveis ou Métodos
+
+- **`abstract`**: Classe que não pode ser instanciada ou método que precisa ser implementado por uma subclasse não abstrata.
+- **`class`**: Especifica uma classe.
+- **`extends`**: Indica a superclasse que a subclasse está estendendo.
+- **`final`**: Impossibilita que uma classe seja estendida, que um método seja sobrescrito ou que uma variável seja reinicializada.
+- **`implements`**: Indica as interfaces que uma classe irá implementar.
+- **`interface`**: Especifica uma interface.
+- **`native`**: Indica que um método está escrito em uma linguagem dependente de plataforma, como C.
+- **`new`**: Instancia um novo objeto, chamando seu construtor.
+- **`static`**: Faz um método ou variável pertencer à classe ao invés de às instâncias.
+- **`strictfp`**: Usado em frente a um método ou classe para garantir que os números de ponto flutuante sigam as regras de ponto flutuante em todas as expressões.
+- **`synchronized`**: Indica que um método só pode ser acessado por uma thread de cada vez.
+- **`transient`**: Impede a serialização de campos.
+- **`volatile`**: Indica que uma variável pode ser alterada durante o uso de threads.
+
+### Controle de Fluxo Dentro de um Bloco de Código
+
+- **`break`**: Sai do bloco de código em que está.
+- **`case`**: Executa um bloco de código dependendo do teste do `switch`.
+- **`continue`**: Pula a execução do código que viria após essa linha e vai para a próxima iteração do loop.
+- **`default`**: Executa esse bloco de código caso nenhum dos testes de `switch-case` seja verdadeiro.
+- **`do`**: Executa um bloco de código uma vez, e então realiza um teste em conjunto com o `while` para determinar se o bloco deverá ser executado novamente.
+- **`else`**: Executa um bloco de código alternativo caso o teste `if` seja falso.
+- **`for`**: Usado para realizar um loop condicional sobre um bloco de código.
+- **`if`**: Usado para realizar um teste lógico de verdadeiro ou falso.
+- **`instanceof`**: Determina se um objeto é uma instância de determinada classe, superclasse ou interface.
+- **`return`**: Retorna de um método sem executar qualquer código que venha depois desta linha (também pode retornar uma variável).
+- **`switch`**: Indica a variável a ser comparada nas expressões `case`.
+- **`while`**: Executa um bloco de código repetidamente enquanto a condição for verdadeira.
+
+### Tratamento de Erros
+
+- **`assert`**: Testa uma expressão condicional para verificar uma suposição do programador.
+- **`catch`**: Declara o bloco de código usado para tratar uma exceção.
+- **`finally`**: Bloco de código, após um `try-catch`, que é executado independentemente do fluxo de programa seguido ao lidar com uma exceção.
+- **`throw`**: Usado para lançar uma exceção para o método que o chamou.
+- **`throws`**: Indica que um método pode lançar uma exceção para o método que o chamou.
+- **`try`**: Bloco de código que tentará ser executado, mas que pode causar uma exceção.
+
+### Variáveis de Referência
+
+- **`super`**: Refere-se à superclasse imediata.
+- **`this`**: Refere-se à instância atual do objeto.
+
+### Palavras Reservadas Não Utilizadas
+
+- **`const`**: Não utilize para declarar constantes; use `public static final`.
+- **`goto`**: Não implementada na linguagem Java por ser considerada prejudicial.
+
+### Literais Reservados
+
+- **`null`**, **`true`**, e **`false`**: São tecnicamente valores literais, e não palavras-chave. Tentar criar identificadores com esses valores resultará em um erro de compilação.
+
+## Escopo de Uso
+
+| **Uso**   | **Palavras**                              | **Observação**                                                   |
+|-----------|------------------------------------------|------------------------------------------------------------------|
+| **Arquivo** | `package`, `import`, `static`           | `package` define o diretório da classe, `import` indica de onde a classe será importada, `static` faz um membro pertencer à classe. |
+| **Classe** | `public`, `protected`, `private`, `final`, `abstract`, `extends`, `implements` | `public`, `protected`, e `private` determinam o acesso; `final` evita herança; `abstract` define uma classe que não pode ser instanciada ou métodos que devem ser implementados por subclasses; `extends` define uma superclasse; `implements` indica a implementação de interfaces. |
+| **Método** | `public`, `protected`, `private`, `static`, `final`, `abstract`, `void`, `return` | `public`, `protected`, e `private` determinam o acesso; `static` define métodos de classe; `final` impede a sobrescrita; `abstract` define métodos que devem ser implementados por subclasses; `void` indica ausência de retorno; `return` é usado para devolver um valor. |
+| **Atributo** | `public`, `protected`, `private`, `static`, `final`, tipo primitivo | `public`, `protected`, e `private` determinam o acesso; `static` faz o atributo pertencer à classe; `final` impede a modificação do valor; tipo primitivo define o tipo de dado. |
+
+## Palavras "Opostas"
+
+Assim como nas classificações gramaticais da língua portuguesa, existem algumas palavras que são completamente opostas (antônimas) na linguagem Java conforme tabela abaixo:
+
+| **Palavra** | **Palavra Oposta** | **Explicação**                                                  |
+|-------------|---------------------|-----------------------------------------------------------------|
+| `package`   | `import`            | `package` define o diretório onde a classe reside; `import` indica de onde a classe será importada. Classes com nomes iguais podem estar em pacotes diferentes. |
+| `extends`   | `implements`        | `extends` define que uma classe estende outra classe; `implements` define que uma classe implementa uma interface. Não há uma relação inversa direta entre esses dois. |
+| `final`     | `abstract`          | `final` impede a modificação de valor ou comportamento; `abstract` define que métodos ou classes devem ser implementados por subclasses. Se uma classe tem um método abstrato, ela própria deve ser abstrata. |
+| `throws`    | `throw`             | `throws` indica que um método pode lançar uma exceção; `throw` é usado para lançar efetivamente uma exceção. Essas palavras são usadas em contextos diferentes para manipulação de exceções. |
+
+## Documentação
+
+O JavaDoc é uma ferramenta que gera documentação de código-fonte Java em formato HTML. Ele lê os comentários do tipo /** ... */ no código e transforma essas anotações em documentação estruturada.
+
+Como Escrever Comentários JavaDoc
+Para criar JavaDocs, você escreve comentários especiais diretamente acima da declaração de uma classe, método ou campo. Esses comentários geralmente começam com /** e terminam com */.
+
+### Tags
+
+| **Tag**  | **Descrição** |
+|----------|---------------|
+| `@autor` | Autor / Criador |
+| `@version` | Versão do recurso disponibilizado |
+| `@since` | Versão / Data de início da disponibilização do recurso |
+| `@param` | Descrição dos parâmetros dos métodos criados |
+| `@return` | Definição do tipo de retorno de um método |
+| `@throws` | Se o método lança alguma exceção |
+
+````java
+ /**
+   * Este método é utilizado para somar dois números inteiros
+   * @param numeroUm este é o primeiro parâmetro do método
+   * @param numeroDois este é o segundo parâmetro do método
+   * @return int o resultado deste método é a soma dos dois números.
+   */
+  public int somar(int numeroUm, int numeroDois) {
+    return  numeroUm + numeroDois;
+}
+
+````
+
+### Tipo de comentários
+
+- One Line
+
+```java
+// Olá, eu sou um comentário em uma única linha
+```
+
+- Multi Line
+  
+````java
+  /* Olá,
+ * Eu sou um comentario
+ * que posso ser mais detalhadod
+ * quando necessário
+ */
+````
+
+- Documentation
+  
+````java
+  /** 
+ * Estas duas estrelinhas acima
+ * é para identificar que você
+ * pretende elaborar um comentário
+ * a nível de documentação.
+ * Que incrível !!!
+ */
+````
+
+### Javadoc
+
+Javadoc é um gerador de documentação criado pela Sun Microsystems para documentar a API dos programas em Java, a partir do código-fonte. O resultado é expresso em HTML. É constituído, basicamente, por algumas marcações muitos simples inseridas nos comentários do programa.
+
+Este sistema é o padrão de documentação de classes em Java, e muitas dos IDEs desta linguagem irão automaticamente gerar um Javadoc em HTML.
+
+**Criando nossa documentação no formato html para disponibilizar via web.**
+
+Para gerar a documentação JavaDoc, você usa o comando javadoc no terminal, apontando para o arquivo .java:
+
+````shell
+javadoc -d diretorio_de_saida NomeDoArquivo.java
+
+````
+
+- **-d:** Especifica o diretório onde a documentação gerada será armazenada.
+  
+- **NomeDoArquivo.java:** O arquivo ou arquivos que contêm o código-fonte.
+  
+Após a execução, o JavaDoc criará uma série de arquivos HTML no diretório especificado, que poderão ser visualizados em um navegador web.
+
+**Outro exemplo**
+
+````shell
+// No terminal execute o comando abaixo
+
+javadoc -encoding UTF-8 -docencoding ISO-8859-1  -d ../docs  src/*.java
+
+````
+
+O comando que você forneceu é usado para gerar a documentação JavaDoc a partir dos arquivos-fonte Java localizados no diretório `src`. Aqui está a explicação de cada parte do comando:
+
+- **`javadoc`**: Este é o comando para gerar a documentação JavaDoc.
+
+- **`-encoding UTF-8`**: Especifica que o encoding dos arquivos-fonte Java está em UTF-8.
+
+- **`-docencoding ISO-8859-1`**: Define que a documentação gerada será codificada em ISO-8859-1, uma codificação de caracteres comumente usada para idiomas ocidentais.
+
+- **`-d ../docs`**: Define o diretório de saída para a documentação gerada. Neste caso, a documentação será armazenada no diretório `docs`, que está um nível acima do diretório atual.
+
+- **`src/*.java`**: Indica que todos os arquivos `.java` no diretório `src` devem ser processados para gerar a documentação.
+
+Em resumo, esse comando gera a documentação JavaDoc para todos os arquivos `.java` na pasta `src`, garantindo que o encoding dos arquivos seja respeitado e que a documentação gerada seja armazenada na pasta `docs`, um nível acima do diretório atual.

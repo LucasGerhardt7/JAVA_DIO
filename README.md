@@ -16,3 +16,13 @@
 ## Módulo-02
 
 - Tipos, Variáveis e Constantes
+- Operadores:
+  - Aritméticos
+  - Unários
+  - Relacionais
+  - Lógicos
+  - Ternário
+  - Atribuição
+  - Bitwise
+  - Referência
+- Métodos
