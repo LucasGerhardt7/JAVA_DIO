@@ -512,7 +512,7 @@ Mas, como sabemos a melhor forma de definir os métodos das nossas classes? Para
 
 3. **Quais parâmetros serão necessários para execussão do método?** OS métodos as vezes precisão de argumentos como critérios para a execussão.
 4. **O método possúi o risco de apresentar alguma excessão?** Excessões são comuns na execussão de métodos, as vezes é necessário prever e tratar a possível existência de uma excessão.
-5. **QUal a visibilidade do método?** Será necessário que o método seja visível a toda aplicação, somente em mesmo pacotes, através de herança ou somente a nível da própria classe.
+5. **Qual a visibilidade do método?** Será necessário que o método seja visível a toda aplicação, somente em mesmo pacotes, através de herança ou somente a nível da própria classe.
 
 >[!NOTE] 
 Caso o método não retorne nenhum valor, ele será representado pela palavra chave `void`
@@ -738,3 +738,59 @@ O comando que você forneceu é usado para gerar a documentação JavaDoc a part
 - **`src/*.java`**: Indica que todos os arquivos `.java` no diretório `src` devem ser processados para gerar a documentação.
 
 Em resumo, esse comando gera a documentação JavaDoc para todos os arquivos `.java` na pasta `src`, garantindo que o encoding dos arquivos seja respeitado e que a documentação gerada seja armazenada na pasta `docs`, um nível acima do diretório atual.
+
+## Terminal e Argumentos
+
+Nem sempre executamos nosso programa Java pela IDE, já pensou nossos clientes tendo que instalar o Eclipse ou VsCode para rodar o sistema em sua empresa ?
+
+Com a JVM devidamente configurada, nós podemos criar um executável do nosso programa e disponibilizar o instalador para qualquer sistema operacional.
+
+No nosso caso iremos aprender como executar um programa Java via terminal como MS - DOS ou terminal do VsCode.
+
+>[!NOTE]
+>Observe que nosso projeto Java criado por um IDE, ele terá uma pasta chamada `bin`. É nesta pasta que ficarão os arquivos `.class`, o nosso `bytecode`.
+
+### Terminal
+
+Vamos ilustrar como executar uma classe, depois de compilada, sem precisar usar a IDE.
+
+1. Abra o MS-DOS ou Power Shell
+
+2. Localize o diretório do seu projeto: cd C:\estudos\dio-trilha-java-basico\java-terminal
+
+3. Acesse a pasta bin: `cd bin`
+4. Agora digite o comando:`java MinhaClasse` (nome da sua classe sem a extensão .classir) incluindo o pacote ex: `java educ/lucas/curso01/MinhaClasse`. **Tem que ser executado a partr da pasta bin.**
+
+### Pasta bin
+
+A pasta bin é onde guardamos nossas classes compilads com extenção `.class`.
+
+O processo é feito automaticamente pelo vscode, podemos verificar o arquivo .vscode/settings.json para configurar o `outputPath`.
+
+### Compilação Múltipla
+
+>[!NOTE] Usei esse método para corrigir um erro que tinha na pasta bin
+> Na ocasião, as novas classes não estavam indo para a pasta bin. Logo, excluí a pasta bin inteira e usei o código recomendado abaixo
+
+Se uma classe tiver dependencias de uma segunda classe e estiverem no mesmo pacote ou diretório, você pode precisar compilar ambas as classes ao mesmo tempo. Tente compilar todos os arquivos `.java` no pacote:
+
+```shell
+javac -d bin modulo-02/projeto-m2/src/educ/lucas/curso01/*.java
+```
+
+1. `javac` - Este é o compilador de Java. Ele converte arquivos .java (código-fonte Java) em arquivos .class (bytecode Java), que podem ser executados pela Java Virtual Machine (JVM).
+2. `-d bin` - A opção -d seguida de bin especifica o diretório de destino onde os arquivos .class compilados serão colocados.
+   - bin é o diretório de saída para os arquivos compilados. Após a compilação, a estrutura de diretórios dentro de bin refletirá a estrutura dos pacotes no código-fonte.
+  
+3. `modulo-02/projeto-m2/src/educ/lucas/curso01/*.java`
+
+  Esse caminho especifica a localização dos arquivos de código-fonte `.java` que serão compilados.
+
+  `*.java` indica que todos os arquivos `.java` dentro do diretório `educ/lucas/curso01` devem ser compilados. O `*` é um coringa que seleciona todos os arquivos que terminam com `.java.`
+
+#### O Que Acontece Quando Você Executa Esse Comando
+
+- Localização dos Arquivos: O compilador `javac` vai até o diretório `modulo-02/projeto-m2/src/educ/lucas/curso01/` e identifica todos os arquivos `.java`.
+  
+- Compilação: Cada arquivo `.java` é compilado e transformado em um arquivo `.class`.
+- Diretório de Saída: Os arquivos `.class` resultantes são colocados no diretório `bin`, seguindo a estrutura de pacotes. Por exemplo, se você tiver um arquivo `Usuario.java` que declara `package educ.lucas.curso01;`, o compilador criará o arquivo `bin/educ/lucas/curso01/Usuario.class`.
