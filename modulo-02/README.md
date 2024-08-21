@@ -1,4 +1,4 @@
-# Resumo do módulo 2
+# Anotações do módulo 2
 
 ## Anatomia das Classes 1
 
@@ -794,3 +794,134 @@ javac -d bin modulo-02/projeto-m2/src/educ/lucas/curso01/*.java
   
 - Compilação: Cada arquivo `.java` é compilado e transformado em um arquivo `.class`.
 - Diretório de Saída: Os arquivos `.class` resultantes são colocados no diretório `bin`, seguindo a estrutura de pacotes. Por exemplo, se você tiver um arquivo `Usuario.java` que declara `package educ.lucas.curso01;`, o compilador criará o arquivo `bin/educ/lucas/curso01/Usuario.class`.
+
+### Argumentos
+
+Quando executamos uma classe que contenha o método main, o mesmo permite que passemos um array [] de argumentos do tipo String. Logo podemos após a definição da classe a ser executada informar estes parâmetros, exemplo:
+`java MinhaClasse agumentoUm argumentoDois`
+
+
+````java
+public class AboutMe {
+    public static void main(String[] args) {
+        //os argumentos começam com indice 0
+        String nome = args [0];
+        String sobrenome = args [1];
+        int idade = Integer.valueOf(args[2]); //vamos falar sobre Wrappers
+        double altura = Double.valueOf(args[3]);
+
+        System.out.println("Ola, me chamo " + nome + " " + sobrenome);
+        System.out.println("Tenho " + idade + " anos ");
+        System.out.println("Minha altura é " + altura + "cm ");
+    }
+}
+````
+
+Adicionando argumentos nas configurações do vscode para executar o arquivo já com os argumentos.
+
+1. Na barra de ferramentas (menu superior), procure `Executar`.
+2. Clique em `Adicionar configuração` ou `Abrir configuração`
+3. No arquivo de configuração (`launch.json` dentro de `.vscode`), procure o bloco correspondente ao seu arquivo.
+4. adicione os argumentos. Ex: 
+
+````json
+ "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "AboutMe",
+            "request": "launch",
+            "mainClass": "educ.lucas.curso01.AboutMe",
+            "projectName": "projeto-m2_e3d2a5a1",
+            /* argumentos adicionados */
+            "args": ["Lucas","Gerhardt","26","1.80"]
+        }
+
+````
+
+Executando o programa agora no terminal
+
+````shell
+cd C:\estudos\dio-trilha-java-basico\java-terminal
+cd bin
+
+java AboutMe GLEYSON SAMPAIO 28 1.58
+
+````
+
+>[!NOTE] É preciso garantir que o arquivo tenha sido compilado e criado o arquivo .class na pasta bin
+
+### Scanner
+
+Nos exemplos anteriores percebemos que podemos receber dados digitados pelo usuário do nosso sistema, porém tudo precisa estar em uma linha e também é necessário informar os valores nas posições correspondentes. Esta abordagem pode deixar margens de execução com erro do nosso programa. Para isso, com a finalidade de deixar as nossas entradas de dados mais seguras agora vamos receber estes dados via **Scanner**.
+
+A classe **Scanner** permite que o usuário tenha uma interação mais assertiva com o nosso programa, veja como vamos mudar o nosso programa `AboutMe` para deixar mais intuitivo aos usuários.
+
+>[!CAUTION] Problemas com métodos next() nextInt() nextLine() etc...
+> Estava tentando resolver um desafio do bootcamp, onde tinha que usar a classe scanner e pedir ao usuário pra inserir a resposta no terminal.
+> O problema veio ao precisar informar o nome completo. O método `next()` não pega o nome completo, apenas a próxima cadeia de string, ou seja, ao digitar "Lucas Gerhardt" ele só pega o Lucas e não consegue ler o Gerhardt. Enfim, tava dando esse erro. Corrigi adicionando o método `nextLine()`no lugar, porém apareceu outro problema.
+>
+> **nextLine()**
+>
+> Quando usamos os métodos next(), nextInt(), nextDouble() e semelhantes, o scanner lê o valor que você digitou, mas ele não "pega" a tecla Enter `(\n)` que você pressiona depois de digitar o valor. Essa tecla Enter fica "presa" no buffer de entrada.
+>
+> Depois disso, quando você chama `scanner.nextLine()`, ele vê essa tecla Enter que ficou no buffer e pensa que você quer dizer "ok, terminei de digitar", então ele não te dá a chance de digitar mais nada e pula direto para a próxima parte do código.
+>
+> Para evitar isso, a gente coloca um `scanner.nextLine()` extra logo depois de `scanner.next()`ou `scanner.nextInt()`. Esse `scanner.nextLine()` extra vai capturar a tecla Enter que ficou no buffer, limpando o caminho para que o próximo `scanner.nextLine()` realmente funcione como esperado, permitindo que você digite o nome completo sem problemas.
+
+````java
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+
+        // Captura um número inteiro
+        System.out.println("Por favor, digite o número da conta:");
+        int numero = scanner.nextInt();
+        scanner.nextLine();  // Limpa a nova linha deixada por nextInt()
+
+        // Captura uma única palavra
+        System.out.println("Por favor, digite o número da Agência:");
+        String agencia = scanner.next();
+        scanner.nextLine();  // Limpa a nova linha deixada por next()
+
+        // Captura uma linha inteira de texto
+        System.out.println("Por favor, digite o seu nome completo:");
+        String nomeCliente = scanner.nextLine();
+
+        // Captura um número de ponto flutuante
+        System.out.println("Por favor, digite o seu saldo:");
+        double saldo = scanner.nextDouble();
+        scanner.nextLine();  // Limpa a nova linha deixada por nextDouble()
+
+        // Exibe as informações capturadas
+        System.out.println("+++++++++++++++++");
+        System.out.println(String.format("Olá %s, obrigado por criar uma conta em nosso banco. Sua agência é %s, conta %d, e seu saldo %.2f já está disponível para saque.", nomeCliente, agencia, numero, saldo));
+    }
+}
+
+
+````
+
+**Resumo das Boas Práticas:**
+
+Use `nextLine()` para ler linhas inteiras de texto.
+
+Use `next()`, `nextInt()`, `nextDouble()` para ler valores específicos, mas sempre lembre de limpar o buffer depois.
+
+Sempre adicione `scanner.nextLine()` após n`extInt()`, `nextDouble()`, `next()`, etc., antes de usar `nextLine()` novamente.
+
+**Quando Não Limpar o Buffer:**
+
+Se você estiver usando apenas `nextLine()` em seu código, não precisará se preocupar com a limpeza do buffer, pois ele já captura a nova linha corretamente.
+
+## Controles de fluxo
+
+### Classificação
+
+- Estruturas condicionais: if-else, switch-case
+- Estruturas de repetição: for, while, do-while
+- Estruturas de exceções: try-catch-finally, throw
+  

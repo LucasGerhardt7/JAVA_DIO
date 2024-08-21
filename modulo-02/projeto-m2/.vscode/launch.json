@@ -1,0 +1,36 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "AboutMe",
+            "request": "launch",
+            "mainClass": "educ.lucas.curso01.AboutMe",
+            "projectName": "projeto-m2_e3d2a5a1",
+            "args": ["Lucas","Gerhardt","26","1.80"]
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "MinhaClasse",
+            "request": "launch",
+            "mainClass": "educ.lucas.curso01.MinhaClasse",
+            "projectName": "projeto-m2_e3d2a5a1"
+        },
+        {
+            "type": "java",
+            "name": "TiposVariaveis",
+            "request": "launch",
+            "mainClass": "educ.lucas.curso01.TiposVariaveis",
+            "projectName": "projeto-m2_e3d2a5a1"
+        }
+    ]
+}
