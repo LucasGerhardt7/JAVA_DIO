@@ -542,7 +542,7 @@ A linguagem Java possui 52 palavras reservadas. Todas essas palavras são classi
 - **`import`**: Importa pacotes ou classes para dentro do código.
 - **`package`**: Especifica a que pacote todas as classes de um arquivo pertencem.
 
-## Modificadores de Acesso
+### Modificadores de Acesso
 
 - **`public`**: Acesso de qualquer classe.
 - **`private`**: Acesso apenas dentro da classe.
@@ -614,7 +614,7 @@ A linguagem Java possui 52 palavras reservadas. Todas essas palavras são classi
 
 - **`null`**, **`true`**, e **`false`**: São tecnicamente valores literais, e não palavras-chave. Tentar criar identificadores com esses valores resultará em um erro de compilação.
 
-## Escopo de Uso
+### Escopo de Uso
 
 | **Uso**   | **Palavras**                              | **Observação**                                                   |
 |-----------|------------------------------------------|------------------------------------------------------------------|
@@ -623,7 +623,7 @@ A linguagem Java possui 52 palavras reservadas. Todas essas palavras são classi
 | **Método** | `public`, `protected`, `private`, `static`, `final`, `abstract`, `void`, `return` | `public`, `protected`, e `private` determinam o acesso; `static` define métodos de classe; `final` impede a sobrescrita; `abstract` define métodos que devem ser implementados por subclasses; `void` indica ausência de retorno; `return` é usado para devolver um valor. |
 | **Atributo** | `public`, `protected`, `private`, `static`, `final`, tipo primitivo | `public`, `protected`, e `private` determinam o acesso; `static` faz o atributo pertencer à classe; `final` impede a modificação do valor; tipo primitivo define o tipo de dado. |
 
-## Palavras "Opostas"
+### Palavras "Opostas"
 
 Assim como nas classificações gramaticais da língua portuguesa, existem algumas palavras que são completamente opostas (antônimas) na linguagem Java conforme tabela abaixo:
 

@@ -26,3 +26,10 @@
   - Bitwise
   - Referência
 - Métodos
+- Palavras reservadas
+- Documentação
+- Terminal e argumentos (args)
+- Controles de fluxo
+  - estruturas condicionais
+  - estruturas de repetição
+  - estruturas de exceção
